@@ -1,3 +1,11 @@
+/*
+ * E89 Pedagogical & Technical Lab
+ * project:     printf
+ * created on:  2022-12-19 - 16:38 +0100
+ * 1st author:  dylan.le - dylan.le
+ * description: print
+ */
+
 #include "pop.h"
 int stu_dprintf(int fd, const char *pattern, ...)
 {

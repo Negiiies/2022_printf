@@ -1,3 +1,11 @@
+/*
+ * E89 Pedagogical & Technical Lab
+ * project:     base10
+ * created on:  2022-12-19 - 16:47 +0100
+ * 1st author:  dylan.le - dylan.le
+ * description: printf
+ */
+
 #include "pop.h"
 void stu_putchar(char c)
 {
