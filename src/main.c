@@ -18,4 +18,4 @@ int main(void)
     str = "lol fdkfs";
     i = stu_dprintf(1,"bonjour %sje %dveux %p g de%c coque, merci\n",str, 15623, p, 5462);
     printf("%d\n", i);
-r}
+}
