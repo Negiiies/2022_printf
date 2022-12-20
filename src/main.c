@@ -12,10 +12,10 @@ int main(void)
 {
     char *str;
     int i;
-    char p;
+    char a;
 
-    p = 'o';
+    a = 'p';
     str = "lol fdkfs";
-    i = stu_dprintf(1,"bonjour %sje %dveux %p g de%c coque, merci\n",str, 15623, p, 5462);
+    i = stu_dprintf(1,"bonjour %sje %d veux de %c %pcoque, merci\n",str, 15623,a,546 );
     printf("%d\n", i);
 }
