@@ -25,6 +25,6 @@ int print_base16(int nb)
         i += 1;
     }
     write(1, k, stu_strlen(k));
-    return(0);
     free(k);
+    return(0);
 }

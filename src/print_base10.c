@@ -31,7 +31,7 @@ int print_base10(int nb)
         count = nb_len(nb);
         count -= 1;
     }
-    while(count >=0) {
+    while(count >= 0) {
         res = get_digit(nb, count) + '0';
         count -= 1;
         stu_putchar(res);
