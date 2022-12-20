@@ -18,16 +18,15 @@ int stu_dprintf(int fd, const char *pattern, ...)
 
     n = 0;
     i = 0;
+    y = 0;
     va_start(ap, pattern);
     while (pattern[i] != '\0') {
         if (pattern[i] == '%' && pattern[i + 1] =='s') {
             s = va_arg(ap, char*);
-            y = 0;
             write(fd, &s[y], stu_strlen(s));
             i += 2;
         }
         else if (pattern[i] == '%' && pattern[i + 1] == '%') {
-            y = 0;
             write(fd, "%", stu_strlen(s));
             i += 2;
         }
