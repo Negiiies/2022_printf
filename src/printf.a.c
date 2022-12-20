@@ -5,49 +5,46 @@
  * 1st author:  dylan.le - dylan.le
  * description: print
  */
-
+#include "print.h"
 #include "pop.h"
+
+static void init(struct print *info)
+{
+    info->n = 0;
+    info->i = 0;
+    info->y = 0;
+}
+
 int stu_dprintf(int fd, const char *pattern, ...)
 {
-    va_list ap;
-    char *s;
-    int i;
-    int y;
-    int n;
-    char m;
+    struct print info;
 
-    n = 0;
-    i = 0;
-    y = 0;
-    va_start(ap, pattern);
-    while (pattern[i] != '\0') {
-        if (pattern[i] == '%' && pattern[i + 1] =='s') {
-            s = va_arg(ap, char*);
-            write(fd, &s[y], stu_strlen(s));
-            i += 2;
+    init(&info);
+    va_start(info.ap, pattern);
+    while (pattern[info.i] != '\0') {
+        if (pattern[info.i] == '%' && pattern[info.i + 1] =='s') {
+            info.s = va_arg(info.ap, char*);
+            write(fd, &info.s[info.y], stu_strlen(info.s));
+            info.i += 2;
+        } else if (pattern[info.i] == '%' && pattern[info.i + 1] == '%') {
+            write(fd, "%", stu_strlen(info.s));
+            info.i += 2;
+        } else if (pattern[info.i] == '%' && pattern[info.i + 1] == 'd') {
+            print_base10(va_arg(info.ap, int));
+            info.i += 2;
+        } else if (pattern[info.i] == '%' && pattern[info.i + 1] == 'c') {
+            info.m = va_arg(info.ap, int);
+            write(fd, &info.m, 1);
+            info.i += 2;
+        } else if (pattern[info.i] == '%' && pattern[info.i + 1] == 'p') {
+            print_base16(va_arg(info.ap, int));
+            info.i += 2;
         }
-        else if (pattern[i] == '%' && pattern[i + 1] == '%') {
-            write(fd, "%", stu_strlen(s));
-            i += 2;
-        }
-        else if (pattern[i] == '%' && pattern[i + 1] == 'd') {
-            print_base10(va_arg(ap, int));
-            i += 2;
-        }
-        else if (pattern[i] == '%' && pattern[i + 1] == 'c') {
-            m = va_arg(ap, int);
-            write(fd, &m, 1);
-            i += 2;
-        }
-        else if (pattern[i] == '%' && pattern[i + 1] == 'p') {
-            print_base16(va_arg(ap, int));
-            i += 2;
-        }
-        n += write(fd, &pattern[i], 1);
-        i += 1;
+        info.n += write(fd, &pattern[info.i], 1);
+        info.i += 1;
     }
-    va_end(ap);
-    return (n);
+    va_end(info.ap);
+    return (info.n);
 }
 
 

@@ -25,7 +25,7 @@ int print_base10(int nb)
             stu_putchar (res);
         }
         return (res);
-    }else{
+    } else {
         stu_putchar('-');
         nb = -nb;
         count = nb_len(nb);
