@@ -4,14 +4,14 @@
 # 1st author:  dylan.le - dylan.le
 # description: Printf
 
-NAME	=	dprintf.a
+NAME	=	printf.a
 
 SRCS	=	src/printf.a.c		\
 		src/stu_strlen.c	\
 		src/print_base10.c	\
 		src/nb_len.c		\
 		src/get_digit.c		\
-		src/print_base16.c	
+		src/print_base16.c
 
 OBJS	=	$(SRCS:.c=.o)
 
